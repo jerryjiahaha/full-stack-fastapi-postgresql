@@ -6,7 +6,13 @@ from app.api.api_v1.api import api_router
 from app.core import config
 from app.db.session import Session
 
+import sentry_sdk
+from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
+
 app = FastAPI(title=config.PROJECT_NAME, openapi_url="/api/v1/openapi.json")
+
+sentry_sdk.init(dsn=config.SENTRY_DSN)
+app.add_middleware(SentryAsgiMiddleware)
 
 # CORS
 origins = []
