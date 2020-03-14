@@ -1,6 +1,7 @@
 [[source]]
 name = "pypi"
-url = "https://pypi.org/simple"
+#url = "https://pypi.org/simple"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 verify_ssl = true
 
 [dev-packages]

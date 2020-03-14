@@ -34,14 +34,14 @@ SQLALCHEMY_DATABASE_URI = (
 )
 
 SMTP_TLS = getenv_boolean("SMTP_TLS", True)
-SMTP_PORT = None
+SMTP_PORT = 587
 _SMTP_PORT = os.getenv("SMTP_PORT")
 if _SMTP_PORT is not None:
     SMTP_PORT = int(_SMTP_PORT)
-SMTP_HOST = os.getenv("SMTP_HOST")
-SMTP_USER = os.getenv("SMTP_USER")
+SMTP_HOST = os.getenv("SMTP_HOST") or "smtp.sendgrid.net"
+SMTP_USER = os.getenv("SMTP_USER") or "apikey"
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
-EMAILS_FROM_EMAIL = os.getenv("EMAILS_FROM_EMAIL")
+EMAILS_FROM_EMAIL = os.getenv("EMAILS_FROM_EMAIL") or "info@example.com"
 EMAILS_FROM_NAME = PROJECT_NAME
 EMAIL_RESET_TOKEN_EXPIRE_HOURS = 48
 EMAIL_TEMPLATES_DIR = "/app/app/email-templates/build"

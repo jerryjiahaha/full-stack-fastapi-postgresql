@@ -11,6 +11,8 @@ services:
     environment:
       - SERVER_NAME=backend
   backend:
-    environment:
-      # Don't send emails during testing
-      - SMTP_HOST=
+    # environment:
+    #   # Don't send emails during testing
+    #   - SMTP_HOST=
+    env_file:
+      - env-backend.env

@@ -11,6 +11,7 @@ from sentry_sdk.integrations.asgi import SentryAsgiMiddleware
 
 app = FastAPI(title=config.PROJECT_NAME, openapi_url="/api/v1/openapi.json")
 
+## XXX Should I just put all integrations here?
 sentry_sdk.init(dsn=config.SENTRY_DSN)
 app.add_middleware(SentryAsgiMiddleware)
 
