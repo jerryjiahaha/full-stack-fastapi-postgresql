@@ -24,6 +24,13 @@ class CRUDUser(CRUDBase[User, UserCreate, UserUpdate]):
         db_session.refresh(db_obj)
         return db_obj
 
+    def update(
+        self, db_session: Session, *, db_obj: User, obj_in: UserUpdate
+    ) -> User:
+        if obj_in.password:
+            obj_in.hashed_password = get_password_hash(obj_in.password)
+        return super().update(db_session, db_obj=db_obj, obj_in=obj_in)
+
     def authenticate(
         self, db_session: Session, *, email: str, password: str
     ) -> Optional[User]:

@@ -27,6 +27,7 @@ class UserCreate(UserBaseInDB):
 # Properties to receive via API on update
 class UserUpdate(UserBaseInDB):
     password: Optional[str] = None
+    hashed_password: Optional[str] = None
 
 
 # Additional properties to return via API
